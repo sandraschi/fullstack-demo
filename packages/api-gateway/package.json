@@ -1,0 +1,36 @@
+{
+  "name": "@fullstack-demo/api-gateway",
+  "version": "1.0.0",
+  "description": "API Gateway for Fullstack Demo - Central entry point for all microservices",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "tsx watch src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "echo \"Error: no linter specified\" && exit 1"
+  },
+  "keywords": [
+    "api-gateway",
+    "microservices",
+    "nodejs",
+    "typescript",
+    "express"
+  ],
+  "author": "Fullstack Demo Team",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.2",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.5",
+    "tsx": "^4.20.6",
+    "typescript": "^5.3.3"
+  }
+}

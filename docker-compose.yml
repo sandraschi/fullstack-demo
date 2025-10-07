@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Frontend dashboard
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - dashboard-network
+
+  # Backend API Gateway (placeholder for future implementation)
+  # api-gateway:
+  #   build:
+  #     context: ../fullstack-demo-backend/packages/api-gateway
+  #   ports:
+  #     - "3001:3000"
+  #   environment:
+  #     - NODE_ENV=production
+  #     - PORT=3000
+  #   restart: unless-stopped
+  #   networks:
+  #     - dashboard-network
+
+  # Chat Service (placeholder for future implementation)
+  # chat-service:
+  #   build:
+  #     context: ../fullstack-demo-backend/packages/chat-service
+  #   ports:
+  #     - "3002:3001"
+  #   environment:
+  #     - NODE_ENV=production
+  #     - PORT=3001
+  #   restart: unless-stopped
+  #   networks:
+  #     - dashboard-network
+
+networks:
+  dashboard-network:
+    driver: bridge
+
+# Volumes for persistent data (if needed)
+volumes:
+  dashboard-data:
+    driver: local
+

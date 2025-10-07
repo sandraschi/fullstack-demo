@@ -1,0 +1,46 @@
+# Docker Compose for Python TTS/STT Service
+version: '3.8'
+
+services:
+  tts-stt-python:
+    build: .
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./audio_files:/app/audio_files
+      - ./models:/app/models  # For caching downloaded models
+    environment:
+      - PYTHONPATH=/app
+      - TTS_MODEL=tts_models/en/ljspeech/tacotron2-DDC
+      - WHISPER_MODEL=base
+      - MAX_FILE_SIZE=26214400  # 25MB
+      - LOG_LEVEL=INFO
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - tts-stt-network
+
+  # Optional: Redis for caching
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - tts-stt-network
+
+volumes:
+  redis_data:
+
+networks:
+  tts-stt-network:
+    driver: bridge
+
+

@@ -1,0 +1,38 @@
+{
+  "name": "fullstack-demo-backend",
+  "version": "1.0.0",
+  "description": "Backend microservices for Fullstack Demo - AI-powered dashboard with chat, image generation, and TTS/STT",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run dev --workspace=@fullstack-demo/api-gateway",
+    "build": "npm run build --workspaces",
+    "start": "npm run start --workspace=@fullstack-demo/api-gateway",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist packages/*/dist",
+    "install:all": "npm install --workspaces"
+  },
+  "keywords": [
+    "microservices",
+    "ai",
+    "chat",
+    "image-generation",
+    "tts",
+    "stt",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "Fullstack Demo Team",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "type": "commonjs",
+  "dependencies": {
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.7.0"
+  }
+}

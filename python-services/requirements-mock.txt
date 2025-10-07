@@ -1,0 +1,17 @@
+# Mock TTS/STT Service Requirements
+# This version provides mock responses without heavy ML dependencies
+
+# Web framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# File handling
+python-multipart==0.0.6
+
+# Optional: For future real implementations
+# torch==2.1.0
+# transformers==4.35.0
+# TTS==0.20.6
+# openai-whisper==20231117
+
+
